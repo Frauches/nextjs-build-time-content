@@ -1,0 +1,8 @@
+site:
+  title: "Matheus Frauches - Timeline"
+  description: "Bem vindo a minha timeline pessoal"
+personal:
+  name: "Matheus Frauches"
+  avatar: "https://github.com/frauches.png"
+  socialNetworks:
+    github: "https://www.github.com/frauches"

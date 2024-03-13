@@ -1,13 +1,12 @@
 import Box from "@src/components/Box/Box";
-import Link from "@src/components/Link/Link";
-import Text from "@src/components/Text/Text";
 import { useTheme } from "@src/theme/ThemeProvider";
 import Background from "./patterns/Background/Background";
 import Feed from "./patterns/Feed/Feed";
 import Footer from "./patterns/Footer/Footer";
 import Menu from "./patterns/Menu/Menu";
 
-export default function HomeScreen() {
+export default function HomeScreen(props) {
+  console.log(props);
   const theme = useTheme();
 
   return (
@@ -16,7 +15,7 @@ export default function HomeScreen() {
       styleSheet={{
         backgroundColor: theme.colors.neutral.x000,
         flex: 1,
-        alignItems: 'center',
+        alignItems: "center",
       }}
     >
       <Background />
@@ -35,5 +34,5 @@ export default function HomeScreen() {
       </Feed>
        */}
     </Box>
-  )
+  );
 }
