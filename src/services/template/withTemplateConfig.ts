@@ -1,7 +1,7 @@
 import path from "path";
 import readYamlFile from "read-yaml-file";
 
-interface TemplateConfig {
+export interface TemplateConfig {
   site?: {
     title?: string;
     description?: string;
@@ -20,8 +20,6 @@ export async function withTemplateConfig(props = {}) {
   const templateConfig = await readYamlFile<TemplateConfig>(
     PATH_TEMPLATE_CONFIG
   );
-
-  console.log(templateConfig);
 
   return {
     templateConfig,
