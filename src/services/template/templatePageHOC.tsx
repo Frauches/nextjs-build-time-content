@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { TemplateConfigProvider } from "./TemplateConfigContext";
 import type { TemplateConfig } from "./withTemplateConfig";
 
 interface TemplatePageHOCProps {
@@ -11,17 +12,20 @@ export default function templatePageHOC(
 ) {
   return function WrappedComponent(props: { templateConfig: TemplateConfig }) {
     console.log("templatePageHOC", props);
-    const { site } = props.templateConfig ?? {};
+    const { templateConfig } = props ?? {};
     return (
       <>
         <Head>
           <title>
             {templatePAgeHOCPRops?.title
-              ? `${templatePAgeHOCPRops.title} | ${site.title} `
-              : site.title}
+              ? `${templatePAgeHOCPRops.title} | ${templateConfig.site.title} `
+              : templateConfig.site.title}
           </title>
         </Head>
-        <Component {...props} />
+
+        <TemplateConfigProvider value={templateConfig}>
+          <Component {...props} />
+        </TemplateConfigProvider>
       </>
     );
   };
