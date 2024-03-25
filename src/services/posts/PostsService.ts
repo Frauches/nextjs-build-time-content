@@ -6,6 +6,7 @@ export interface Post {
   metadata: {
     date: string;
     url: string;
+    image?: string;
     excerpt: string;
     tags: string[];
   };
@@ -30,6 +31,7 @@ export default function PostsService() {
           metadata: {
             date: new Date(data.date).toISOString(),
             excerpt: data.excerpt,
+            image: data?.image ?? "",
             tags: data.tags,
             url: data.url,
           },
@@ -43,7 +45,6 @@ export default function PostsService() {
       });
 
       const posts = await Promise.all(postsPromise);
-      console.log("POSTS", postsPromise);
       return posts;
     },
   };

@@ -35,7 +35,6 @@ export default function Feed({ children }) {
 Feed.Header = () => {
   const theme = useTheme();
   const templateConfig = useTemplateConfig();
-  // console.log(templateConfig);
 
   return (
     <Box
@@ -60,7 +59,7 @@ Feed.Header = () => {
             borderRadius: "100%",
           }}
           src={templateConfig?.personal?.avatar}
-          alt="Imagem de perfil do Mario Souto"
+          alt="Imagem de perfil do Matheus Frauches"
         />
 
         <Box
@@ -108,12 +107,6 @@ Feed.Header = () => {
           gap: "4px",
         }}
       >
-        {/* <Link
-          target="_blank"
-          href={templateConfig.personal.socialNetworks.github}
-        >
-          <Icon name="github" /> 
-        </Link> */}
         {Object.keys(templateConfig.personal.socialNetworks).map((key) => {
           const socialNetwork = templateConfig.personal.socialNetworks[key];
           if (socialNetwork) {
@@ -130,13 +123,6 @@ Feed.Header = () => {
           return null;
         })}
       </Box>
-
-      {/* <Link href="https://youtube.com/DevSoutinho">
-        <Icon name="youtube" />
-      </Link>
-      <Icon name="twitter" />
-      <Icon name="instagram" />
-      <Icon name="github" /> */}
     </Box>
   );
 };
@@ -151,12 +137,13 @@ Feed.Posts = ({ posts }: FeedPostsProps) => {
         Últimas Atualizações
       </Text>
       {posts.map(({ slug, title, metadata }) => {
-        const { date, excerpt, url, tags } = metadata;
+        const { date, excerpt, url, tags, image } = metadata;
         return (
           <FeedPost
             key={slug}
             title={title}
             date={date}
+            image={image}
             excerpt={excerpt}
             tags={tags}
             url={url}
